@@ -13,25 +13,19 @@ namespace Pyaterochka
         {
             List<Goods> goods = new List<Goods>();
 
-            Goods bulka = new Goods(10, "Bulka", 10.2);
-            Goods milk = new Goods(11, "Milk", 30.2);
-            Goods cheese = new Goods(12, "Cheese", 50.3);
-
-            goods.Add(bulka);
-            goods.Add(milk);
-            goods.Add(cheese);
 
             foreach(var item in goods)
             {
                 item.Display();
             }
 
+            Product milk = new milkProduct(10, "Bulka", 10.2, (21, 12, 3), (21, 12, 17));
 
-            Goods bulka1 = new Product(10, "Bulka", 10.2);
-            Goods milk2 = new milkProduct(11, "Milk", 30.2);
+            Goods bulka1 = new Product(10, "Bulka", 10.2, (21, 12, 3), (21, 12, 17));
+            Product milk2 = new milkProduct(11, "Milk", 30.2, (21, 12, 3), (21, 12, 17));
             Goods ball = new Toy(12, "Ball", 300.0);
 
-            ball.Display();
+            milk.Display();
 
             Console.ReadKey();
         }

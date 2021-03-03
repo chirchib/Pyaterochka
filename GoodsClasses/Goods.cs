@@ -6,21 +6,51 @@ using System.Threading.Tasks;
 
 namespace GoodsClasses
 {
-    public class Goods
+    public abstract class Goods
     {
-        private uint ID;
-        private string Name;
-        private double Price;
+        private uint id;
+        private string name;
+        private double price;
+
+        public uint ID
+        {
+            set
+            {
+                // ToDo: add checking id on repeat
+                if (value > 0) id = value;
+                else Console.WriteLine("ID have to be more 0");
+            }
+            get { return id; } 
+        }
+
+        public string Name
+        {
+            set
+            {
+                name = value;
+            }
+            get { return name; }
+        }
+
+        public double Price
+        {
+            set
+            {
+                if (value > 0) price = value;
+                else Console.WriteLine("Price have to be more 0");
+            }
+            get { return price; }
+        }
 
         public Goods() { }
         public Goods(uint id, string name, double price)
         {
-            this.ID = id;
-            this.Name = name;
-            this.Price = price;
+            this.id = id;
+            this.name = name;
+            this.price = price;
         }
 
-        public void Display()
+        public virtual void Display()
         {
             Console.WriteLine($"ID: {ID}");
             Console.WriteLine($"Name: {Name}");
