@@ -12,6 +12,8 @@ namespace GoodsClasses
         private string name;
         private double price;
 
+        private string Type = "Goods";
+
         public uint ID
         {
             set
@@ -53,6 +55,11 @@ namespace GoodsClasses
         public virtual string Display()
         {
             return $"ID: {ID}, Name: {Name}, Price: {Price}$ ";
+        }
+
+        public override string ToString()
+        {
+            return $"Type: {Type} ID: {ID}, Name: {Name}, Price: {Price}$ ";
         }
     }
 }

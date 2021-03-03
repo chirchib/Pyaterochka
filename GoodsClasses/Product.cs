@@ -4,8 +4,12 @@ namespace GoodsClasses
 {
     public class Product : Goods
     {
-        private Date productionDate;
-        private Date shelfLife;
+        private Date productionDate { get; }
+        private Date shelfLife { get; }
+
+        
+
+        private string Type = "Product";
 
         public Product() { }
         public Product(uint id, string name, double price) : base(id, name, price) { }
@@ -24,6 +28,10 @@ namespace GoodsClasses
             return base.Display() + $"Prodaction date: {productionDate} Shelf Life: { shelfLife}";
         }
 
+        public override string ToString()
+        {
+            return $"Type: {Type} ID: {ID}, Name: {Name}, Price: {Price}$ Prodaction date: {productionDate} Shelf Life: { shelfLife}";
+        }
     }
 
     class Date
@@ -71,6 +79,10 @@ namespace GoodsClasses
         }
 
         public Date() { }
+        public Date((int, int, int) date)
+        {
+            setDate(date.Item1, date.Item2, date.Item3);
+        }
 
         public void setDate(int years, int months, int days)
         {
