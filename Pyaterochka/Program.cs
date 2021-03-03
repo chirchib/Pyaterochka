@@ -106,6 +106,8 @@ namespace Pyaterochka
             } while (choice != '5');
         }
 
+
+        // ToDo: доделать добавление всех товаров, реализовать проверку
         static void AddMenu(bool ex = false)
         {
             Console.Clear();
@@ -127,12 +129,62 @@ namespace Pyaterochka
                 {
                     case '1':
                         Console.Clear();
+
+                        Toy toy = new Toy();
+
+                        do
+                        {
+                            Console.WriteLine("ID: ");
+                            toy.ID = Convert.ToInt32(Console.ReadLine());
+                        } while (isValidID(toy.ID));
+
+                        Console.WriteLine("Name: ");
+                        toy.Name = Console.ReadLine();
+                        Console.WriteLine("Price: ");
+                        toy.Price = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Minimal age: ");
+                        toy.MinAge = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Maximum age(if isn't, write 0): ");
+                        toy.MaxAge = Convert.ToInt32(Console.ReadLine());
+
+                        goods.Add(toy);
+
                         break;
                     case '2':
                         Console.Clear();
+
+                        Product product = new Product();
+
+                        do
+                        {
+                            Console.WriteLine("ID: ");
+                            product.ID = Convert.ToInt32(Console.ReadLine());
+                        } while (isValidID(product.ID));
+
+                        Console.WriteLine("Name: ");
+                        product.Name = Console.ReadLine();
+                        Console.WriteLine("Price: ");
+                        product.Price = Convert.ToDouble(Console.ReadLine());
+                        
+
+
                         break;
                     case '3':
                         Console.Clear();
+
+                        milkProduct milkproduct = new milkProduct();
+
+                        do
+                        {
+                            Console.WriteLine("ID: ");
+                            milkproduct.ID = Convert.ToInt32(Console.ReadLine());
+                        } while (isValidID(milkproduct.ID));
+
+                        Console.WriteLine("Name: ");
+                        milkproduct.Name = Console.ReadLine();
+                        Console.WriteLine("Price: ");
+                        milkproduct.Price = Convert.ToDouble(Console.ReadLine());
+
                         break;
                     case '4':
                         mainMenu();
