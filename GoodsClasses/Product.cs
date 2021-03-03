@@ -8,6 +8,7 @@ namespace GoodsClasses
         private Date shelfLife;
 
         public Product() { }
+        public Product(uint id, string name, double price) : base(id, name, price) { }
         public Product(uint id, string name, double price, 
                       (int, int, int) productionDate, (int, int, int) shelfLife) : base(id, name, price) 
         {
@@ -18,11 +19,9 @@ namespace GoodsClasses
             this.shelfLife.setDate(shelfLife.Item1, shelfLife.Item2, shelfLife.Item3);
         }
 
-        public override void Display()
+        public override string Display()
         {
-            base.Display();
-            Console.WriteLine("Prodaction date: " + productionDate.ToString());
-            Console.WriteLine("Shelf Life: " + shelfLife.ToString());
+            return base.Display() + $"Prodaction date: {productionDate} Shelf Life: { shelfLife}";
         }
 
     }

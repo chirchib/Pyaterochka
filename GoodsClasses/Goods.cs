@@ -50,11 +50,9 @@ namespace GoodsClasses
             this.price = price;
         }
 
-        public virtual void Display()
+        public virtual string Display()
         {
-            Console.WriteLine($"ID: {ID}");
-            Console.WriteLine($"Name: {Name}");
-            Console.WriteLine($"Price: {Price}$");
+            return $"ID: {ID}, Name: {Name}, Price: {Price}$ ";
         }
     }
 }
