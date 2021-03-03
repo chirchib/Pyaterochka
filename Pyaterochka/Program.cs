@@ -27,7 +27,7 @@ namespace Pyaterochka
             Console.WriteLine("Choice: ");
             char choice = Console.ReadKey(true).KeyChar;
 
-            while (choice != '4')
+            do
             {
                 switch (choice)
                 {
@@ -40,11 +40,13 @@ namespace Pyaterochka
                     case '3':
                         DeleteMenu();
                         break;
+                    case '4':
+                        break;
                     default:
                         mainMenu();
                         break;
                 }
-            }
+            } while (choice != '4');
         }
 
         static void DisplayMenu()
@@ -59,7 +61,7 @@ namespace Pyaterochka
             Console.WriteLine("Choice: ");
             char choice = Console.ReadKey(true).KeyChar;
 
-            while (choice != '4')
+            do
             {
                 switch (choice)
                 {
@@ -100,8 +102,8 @@ namespace Pyaterochka
                     default:
                         DisplayMenu();
                         break;
-                }
-            }
+                } 
+            } while (choice != '5');
         }
 
         static void AddMenu(bool ex = false)
@@ -119,16 +121,12 @@ namespace Pyaterochka
             Console.WriteLine("Choice: ");
             char choice = Console.ReadKey(true).KeyChar;
 
-            while (choice != '4')
+            do
             {
                 switch (choice)
                 {
                     case '1':
                         Console.Clear();
-
-
-
-
                         break;
                     case '2':
                         Console.Clear();
@@ -136,11 +134,14 @@ namespace Pyaterochka
                     case '3':
                         Console.Clear();
                         break;
+                    case '4':
+                        mainMenu();
+                        break;
                     default:
                         AddMenu();
                         break;
                 }
-            }
+            } while (choice != '4');
         }
 
         static void DeleteMenu(bool ex = true)
@@ -158,7 +159,7 @@ namespace Pyaterochka
             Console.WriteLine("Choice: ");
             char choice = Console.ReadKey(true).KeyChar;
 
-            while (choice != '4')
+            do
             {
                 switch (choice)
                 {
@@ -178,9 +179,9 @@ namespace Pyaterochka
                             if (item.ID == ID_toy)
                                 goods.Remove(item);
                         }
-                        
+
                         DeleteMenu(isValidID(ID_toy));
-                        
+
                         break;
                     case '2':
                         Console.Clear();
@@ -222,11 +223,14 @@ namespace Pyaterochka
                         DeleteMenu(isValidID(ID_milkprod));
 
                         break;
+                    case '4':
+                        mainMenu();
+                        break;
                     default:
                         DeleteMenu();
                         break;
                 }
-            }
+            } while (choice != '4');
         }
 
         static bool isValidID(int id)
