@@ -11,26 +11,227 @@ namespace Pyaterochka
     {
         static void Main(string[] args)
         {
-            List<Goods> goods = new List<Goods>();
+            mainMenu();
+        }
 
-            Product milk = new milkProduct(10, "milk", 10.2, (21, 12, 3), (21, 12, 17));
-            Goods bulka1 = new Product(10, "Bulka", 10.2, (21, 12, 3), (21, 12, 17));
+        static List<Goods> goods = new List<Goods>();
 
-            Goods ball = new Toy(12, "Ball", 300.0);
+        static void mainMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("1. Display\n" +
+                              "2. Add a new goods\n" +
+                              "3. Delete a goods\n" +
+                              "4. Exit");
 
-            
-            goods.Add(ball);
-            goods.Add(bulka1);
-            goods.Add(milk);
+            Console.WriteLine("Choice: ");
+            char choice = Console.ReadKey(true).KeyChar;
 
-
-            foreach (var item in goods)
+            while (choice != '4')
             {
-                Console.WriteLine(item.ToString());
+                switch (choice)
+                {
+                    case '1':
+                        DisplayMenu();
+                        break;
+                    case '2':
+                        AddMenu();
+                        break;
+                    case '3':
+                        DeleteMenu();
+                        break;
+                    default:
+                        mainMenu();
+                        break;
+                }
             }
+        }
+
+        static void DisplayMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("1. Display all goods\n" +
+                              "2. Display toys\n" +
+                              "3. Display products\n" +
+                              "4. Display milk products\n" +
+                              "5. Back");
+
+            Console.WriteLine("Choice: ");
+            char choice = Console.ReadKey(true).KeyChar;
+
+            while (choice != '4')
+            {
+                switch (choice)
+                {
+                    case '1':
+                        Console.Clear();
+                        foreach (var item in goods)
+                        {
+                            Console.WriteLine(item.ToString());
+                        }
+                        break;
+                    case '2':
+                        Console.Clear();
+                        foreach (var item in goods)
+                        {   
+                            if (item.Type == "Toy")
+                                Console.WriteLine(item.ToString());
+                        }
+                        break;
+                    case '3':
+                        Console.Clear();
+                        foreach (var item in goods)
+                        {
+                            if (item.Type == "Product")
+                                Console.WriteLine(item.ToString());
+                        }
+                        break;
+                    case '4':
+                        Console.Clear();
+                        foreach (var item in goods)
+                        {
+                            if (item.Type == "Milk product")
+                                Console.WriteLine(item.ToString());
+                        }
+                        break;
+                    case '5':
+                        mainMenu();
+                        break;
+                    default:
+                        DisplayMenu();
+                        break;
+                }
+            }
+        }
+
+        static void AddMenu(bool ex = false)
+        {
+            Console.Clear();
+
+            if (ex)
+                Console.WriteLine("The good whis ID already exists.\nTry again");
+
+            Console.WriteLine("1. Add a toy\n" +
+                              "2. Add a product\n" +
+                              "3. Add a milk product\n" +
+                              "4. Back");
+
+            Console.WriteLine("Choice: ");
+            char choice = Console.ReadKey(true).KeyChar;
+
+            while (choice != '4')
+            {
+                switch (choice)
+                {
+                    case '1':
+                        Console.Clear();
 
 
-            Console.ReadKey();
+
+
+                        break;
+                    case '2':
+                        Console.Clear();
+                        break;
+                    case '3':
+                        Console.Clear();
+                        break;
+                    default:
+                        AddMenu();
+                        break;
+                }
+            }
+        }
+
+        static void DeleteMenu(bool ex = true)
+        {
+            Console.Clear();
+
+            if (!ex)
+                Console.WriteLine("There is no goods with this ID.\nTry again");
+
+            Console.WriteLine("1. Delete a toy\n" +
+                              "2. Delete a product\n" +
+                              "3. Delete a milk product\n" +
+                              "4. Back");
+
+            Console.WriteLine("Choice: ");
+            char choice = Console.ReadKey(true).KeyChar;
+
+            while (choice != '4')
+            {
+                switch (choice)
+                {
+                    case '1':
+                        Console.Clear();
+                        foreach (var item in goods)
+                        {
+                            if (item.Type == "Toy")
+                                Console.WriteLine(item.ToString());
+                        }
+
+                        Console.WriteLine("Choice the ID of good that you want to delete");
+                        int ID_toy = Convert.ToInt32(Console.ReadLine());
+
+                        foreach (var item in goods)
+                        {
+                            if (item.ID == ID_toy)
+                                goods.Remove(item);
+                        }
+                        
+                        DeleteMenu(isValidID(ID_toy));
+                        
+                        break;
+                    case '2':
+                        Console.Clear();
+                        foreach (var item in goods)
+                        {
+                            if (item.Type == "Product")
+                                Console.WriteLine(item.ToString());
+                        }
+
+                        Console.WriteLine("Choice the ID of good that you want to delete");
+                        int ID_prod = Convert.ToInt32(Console.ReadLine());
+
+                        foreach (var item in goods)
+                        {
+                            if (item.ID == ID_prod)
+                                goods.Remove(item);
+                        }
+
+                        DeleteMenu(isValidID(ID_prod));
+
+                        break;
+                    case '3':
+                        Console.Clear();
+                        foreach (var item in goods)
+                        {
+                            if (item.Type == "Milk product")
+                                Console.WriteLine(item.ToString());
+                        }
+
+                        Console.WriteLine("Choice the ID of good that you want to delete");
+                        int ID_milkprod = Convert.ToInt32(Console.ReadLine());
+
+                        foreach (var item in goods)
+                        {
+                            if (item.ID == ID_milkprod)
+                                goods.Remove(item);
+                        }
+
+                        DeleteMenu(isValidID(ID_milkprod));
+
+                        break;
+                    default:
+                        DeleteMenu();
+                        break;
+                }
+            }
+        }
+
+        static bool isValidID(int id)
+        {
+            return goods.Exists(x => x.ID == id);
         }
     }
 }

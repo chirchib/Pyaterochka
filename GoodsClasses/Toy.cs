@@ -4,9 +4,10 @@ namespace GoodsClasses
 {
     public class Toy : Goods
     {
-        private string Type = "Toy";
         private int minAge = 0;
         private int maxAge = 0;
+
+        public string Type => "Toy";
 
         public int MinAge
         {
@@ -35,14 +36,12 @@ namespace GoodsClasses
         }
 
         public Toy() { }
-        public Toy(uint id, string name, double price) : base(id, name, price) { }
-        public Toy(uint id, string name, double price, int minAge, int maxAge = 0) : base(id, name, price)
+        public Toy(int id, string name, double price) : base(id, name, price) { }
+        public Toy(int id, string name, double price, int minAge, int maxAge = 0) : base(id, name, price)
         {
             this.MinAge = minAge;
             this.MaxAge = maxAge;
         }
-
-
 
         public override string ToString()
         {

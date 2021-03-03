@@ -7,11 +7,11 @@ namespace GoodsClasses
         private Date productionDate { get; }
         private Date shelfLife { get; }
 
-        private string Type = "Product";
+        public string Type => "Product";
 
         public Product() { }
-        public Product(uint id, string name, double price) : base(id, name, price) { }
-        public Product(uint id, string name, double price, 
+        public Product(int id, string name, double price) : base(id, name, price) { }
+        public Product(int id, string name, double price, 
                       (int, int, int) productionDate, (int, int, int) shelfLife) : base(id, name, price) 
         {
             this.productionDate = new Date();

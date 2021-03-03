@@ -8,13 +8,13 @@ namespace GoodsClasses
 {
     public abstract class Goods
     {
-        private uint id;
+        private int id;
         private string name;
         private double price;
 
-        private string Type = "Goods";
+        public string Type => "Goods";
 
-        public uint ID
+        public int ID
         {
             set
             {
@@ -45,7 +45,7 @@ namespace GoodsClasses
         }
 
         public Goods() { }
-        public Goods(uint id, string name, double price)
+        public Goods(int id, string name, double price)
         {
             this.id = id;
             this.name = name;

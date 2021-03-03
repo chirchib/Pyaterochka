@@ -7,11 +7,11 @@ namespace GoodsClasses
         private Date productionDate;
         private Date shelfLife;
 
-        private string Type = "Milk product";
+        public string Type => "Milk product";
 
         public milkProduct() { }
-        public milkProduct(uint id, string name, double price) : base(id, name, price) { }
-        public milkProduct(uint id, string name, double price,
+        public milkProduct(int id, string name, double price) : base(id, name, price) { }
+        public milkProduct(int id, string name, double price,
                           (int, int, int) productionDate, (int, int, int) shelfLife) : base(id, name, price, productionDate, shelfLife)
         {
             this.productionDate = new Date(productionDate);
