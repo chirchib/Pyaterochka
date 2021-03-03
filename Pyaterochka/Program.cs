@@ -26,7 +26,7 @@ namespace Pyaterochka
 
             foreach (var item in goods)
             {
-                Console.WriteLine(item.Display());
+                Console.WriteLine(item.ToString());
             }
 
 

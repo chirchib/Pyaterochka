@@ -7,8 +7,6 @@ namespace GoodsClasses
         private Date productionDate { get; }
         private Date shelfLife { get; }
 
-        
-
         private string Type = "Product";
 
         public Product() { }
@@ -30,7 +28,7 @@ namespace GoodsClasses
 
         public override string ToString()
         {
-            return $"Type: {Type} ID: {ID}, Name: {Name}, Price: {Price}$ Prodaction date: {productionDate} Shelf Life: { shelfLife}";
+            return $"Type: {Type}, ID: {ID}, Name: {Name}, Price: {Price}$ Prodaction date: {productionDate} Shelf Life: { shelfLife}";
         }
     }
 
