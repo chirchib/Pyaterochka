@@ -11,6 +11,27 @@ namespace Pyaterochka
     {
         static void Main(string[] args)
         {
+            Goods obj1 = new Toy(10, "Ball", 20, 6);
+            Goods obj2 = new Toy(11, "Lego", 100, 2, 4);
+            Goods obj3 = new Toy(12, "Kukla", 9.8, 8, 12);
+
+            Goods obj4 = new Product(13, "Cheeps", 2, (21, 1, 14), (22, 1, 14));
+            Goods obj5 = new Product(14, "Cracks", 4, (21, 2, 1), (23, 10, 1));
+
+            Goods obj6 = new milkProduct(15, "Milk", 5, (21, 2, 1), (21, 2, 15));
+            Goods obj7 = new milkProduct(16, "Cheese", 10, (21, 4, 1), (21, 5, 1));
+
+            goods.Add(obj1);
+            goods.Add(obj2);
+            goods.Add(obj3);
+            goods.Add(obj4);
+            goods.Add(obj5);
+            goods.Add(obj6);
+            goods.Add(obj7);
+
+
+
+
             mainMenu();
         }
 
@@ -18,7 +39,7 @@ namespace Pyaterochka
 
         static void mainMenu()
         {
-            Console.Clear();
+            //   Console.Clear();
             Console.WriteLine("1. Display\n" +
                               "2. Add a new goods\n" +
                               "3. Delete a goods\n" +
@@ -71,30 +92,34 @@ namespace Pyaterochka
                         {
                             Console.WriteLine(item.ToString());
                         }
+                        mainMenu();
                         break;
                     case '2':
                         Console.Clear();
                         foreach (var item in goods)
-                        {   
-                            if (item.Type == "Toy")
+                        {
+                            if (item is Toy)
                                 Console.WriteLine(item.ToString());
                         }
+                        mainMenu();
                         break;
                     case '3':
                         Console.Clear();
                         foreach (var item in goods)
                         {
-                            if (item.Type == "Product")
+                            if (item is Product)
                                 Console.WriteLine(item.ToString());
                         }
+                        mainMenu();
                         break;
                     case '4':
                         Console.Clear();
                         foreach (var item in goods)
                         {
-                            if (item.Type == "Milk product")
+                            if (item is milkProduct)
                                 Console.WriteLine(item.ToString());
                         }
+                        mainMenu();
                         break;
                     case '5':
                         mainMenu();
@@ -102,7 +127,7 @@ namespace Pyaterochka
                     default:
                         DisplayMenu();
                         break;
-                } 
+                }
             } while (choice != '5');
         }
 
@@ -165,7 +190,7 @@ namespace Pyaterochka
                         product.Name = Console.ReadLine();
                         Console.WriteLine("Price: ");
                         product.Price = Convert.ToDouble(Console.ReadLine());
-                        
+
 
 
                         break;
@@ -228,7 +253,7 @@ namespace Pyaterochka
 
                         foreach (var item in goods)
                         {
-                            if (item.ID == ID_toy)
+                            if (item is Toy)
                                 goods.Remove(item);
                         }
 
@@ -239,7 +264,7 @@ namespace Pyaterochka
                         Console.Clear();
                         foreach (var item in goods)
                         {
-                            if (item.Type == "Product")
+                            if (item is Product)
                                 Console.WriteLine(item.ToString());
                         }
 
@@ -259,7 +284,7 @@ namespace Pyaterochka
                         Console.Clear();
                         foreach (var item in goods)
                         {
-                            if (item.Type == "Milk product")
+                            if (item is milkProduct)
                                 Console.WriteLine(item.ToString());
                         }
 
